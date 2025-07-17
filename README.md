@@ -10,5 +10,10 @@ In this project, teams are assigned to design an arena and exploit the mapping a
 - Uses ROS Melodic (Ubuntu 18.04)
 - ARM-based hardware (Nvidia Jetson Nano)
 - LiDAR and depth vision-based sensing (YDLIDAR XL2 & Orbbec Dabai)
+- RViz visualization
 
-## <to be filled>
+## Why ROS?
+- Open-source software frameworks: Provides users with the flexibility when choosing tools and libraries for use with their application, all while being free and supported by a large community.
+- Large user base: Widespread use from universities to industries as a result of its open-source nature.
+
+## to be filled
