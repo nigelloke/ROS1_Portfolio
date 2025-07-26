@@ -4,7 +4,7 @@
 ![Static Badge](https://img.shields.io/badge/OS-Ubuntu%2018.04-blue)
 
 ## Overview
-In this project, teams are assigned to design an arena and explore the mapping and navgation capabilities of the AgileX LIMO which is based on ROS (Robot Operating System). Extensive documentation on the LIMO can be found on their [GitHub repository](https://github.com/agilexrobotics/limo-doc/).
+In this project, teams are assigned to design an arena and explore the mapping and navgation capabilities of the AgileX LIMO which is based on ROS (Robot Operating System). Extensive documentation on the LIMO can be found on the manufacturer's [GitHub repository](https://github.com/agilexrobotics/limo-doc/).
 
 ## Key Aspects
 - Uses ROS Melodic (Ubuntu 18.04)
