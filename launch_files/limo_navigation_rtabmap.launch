@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- 0) map→odom TF  -->
+   <node pkg="tf2_ros" type="static_transform_publisher"
+          name="map_to_odom"
+          args="0 0 0  0 0 0 1  map odom"/> 
+
+  <!-- 1) Add limo_base_node for odometry -->
+  <node pkg="limo_bringup" type="limo_base_node" name="limo_base" output="screen">
+    <remap from="odom" to="/odom"/>
+  </node>
+
+  <!-- 2) slope_detector.py -->
+  <node pkg="limo_bringup"
+        type="slope_detector.py"
+        name="slope_detector"
+        output="screen">
+    <param name="ground_distance" value="0.05"/>
+    <param name="max_slope_deg"    value="15"/>
+    <param name="slow_speed"       value="0.1"/>
+    <param name="normal_speed"     value="0.5"/>
+    <remap from="/camera/depth/points" to="/camera/depth/points"/>
+    <remap from="/cloud_no_ground"     to="/cloud_no_ground"/>
+    <remap from="/cmd_vel"             to="/cmd_vel"/>
+  </node>
+
+  <!-- 3) move_base only sees /cloud_no_ground -->
+  <node pkg="move_base"
+        type="move_base"
+        name="move_base"
+        respawn="false"
+        output="screen">
+    <rosparam file="$(find limo_bringup)/param/4wd/costmap_common_params.yaml"
+              command="load" ns="global_costmap"/>
+    <rosparam file="$(find limo_bringup)/param/4wd/costmap_common_params.yaml"
+              command="load" ns="local_costmap"/>
+    <rosparam file="$(find limo_bringup)/param/4wd/local_costmap_params.yaml"
+              command="load"/>
+    <rosparam file="$(find limo_bringup)/param/4wd/global_costmap_params.yaml"
+              command="load"/>
+    <rosparam file="$(find limo_bringup)/param/4wd/move_base_params.yaml"
+              command="load"/>
+    <rosparam file="$(find limo_bringup)/param/4wd/base_local_planner_params.yaml"
+              command="load"/>
+    <param name="global_costmap/obstacle_layer/point_cloud_topic"
+           value="/cloud_no_ground"/>
+    <param name="local_costmap/obstacle_layer/point_cloud_topic"
+           value="/cloud_no_ground"/>
+  </node>
+
+</launch>
