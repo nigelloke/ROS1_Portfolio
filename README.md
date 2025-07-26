@@ -1,6 +1,6 @@
 # ROS1 Portfolio
 ![Static Badge](https://img.shields.io/badge/ROS-Melodic-green)
-![Static Badge](https://img.shields.io/badge/Platform-AgileX-blue)
+![Static Badge](https://img.shields.io/badge/Platform-AgileX_LIMO-blue)
 ![Static Badge](https://img.shields.io/badge/OS-Ubuntu%2018.04-blue)
 
 ## Overview
