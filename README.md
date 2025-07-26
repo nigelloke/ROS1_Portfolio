@@ -20,6 +20,6 @@ In this project, teams are assigned to design an arena and explore the mapping a
 - For this project, we have decided to use `rtabmap` mapping algorithm, which can take advantage of the RGB-D data from the Orbbec Dabai depth camera and the EAI X2L 2D LiDAR to map out the arena.
 
 ## Real-time object detection
--  Using `darknet_ros` and the Orbbec Dabai camera, the LIMO can detect and identify objects that are in the camera view.
+-  Using `darknet_ros` and Orbbec Dabai camera, the LIMO can detect and identify objects that are in the camera view.
 -  In addition to common objects such as persons and traffic lights, uncommon objects like information signs can also be trained locally and then trigger a routine which will tell the LIMO what to do.
 -  Although this was ultimately not implemented due to time constraints and hardware limitations (storage, RAM), it was proposed as a method for navigating through our arena where the obstacles are not walled high enough for the rtabmap to detect.
