@@ -7,9 +7,6 @@ Darknet YOLO real-time object detection contained in a ROS1 Wrapper.
 - Takes advantage of CUDA for GPU acceleration
 - Can be configured using ROS parameters and `.yaml` files
 
-## Contents
-
-
 ## To install
 
 ### Prerequisites
