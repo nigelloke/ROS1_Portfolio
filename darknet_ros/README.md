@@ -62,14 +62,14 @@ roslaunch darknet_ros darknet_ros.launch image:=/camera/image_raw threshold:=0.6
 
 ## Configuration
 
-Parameters can be set via YAML or launch arguments:
+The following parameters can be set using YAML or launch arguments:
 
 | Parameter       | Type   | Default                 | Description                    |
 | --------------- | ------ | ----------------------- | ------------------------------ |
 | `model_cfg`     | string | `*.cfg`                 | Path to Darknet config file    |
 | `model_weights` | string | `*.weights`             | Path to Darknet weights file   |
 | `class_labels`  | string | `*.names`               | Path to class labels file      |
-| `gpu_id`        | int    | `-1`                    | GPU device ID (`-1` for CPU)   |
+| `gpu_id`        | int    | `-1`                    | GPU device ID (`-1` to use CPU)|
 | `threshold`     | double | `0.5`                   | Detection confidence threshold |
 | `image_topic`   | string | `/camera/rgb/image_raw` | Input image topic              |
 
@@ -87,9 +87,9 @@ Parameters can be set via YAML or launch arguments:
 * **darknet\_ros.launch**: Main detection node
 * **dabai_u3.launch**: Camera Module
 
-## Terminal Quickstart
+## Getting started in Terminal
 
-Follow these steps in separate terminals to build, run detection, capture images, and overlay boundaries:
+Follow these steps to build, run detection, capture images, and overlay boundaries. You will need to open multiple terminals to perform the tasks:
 
 1. **Clone & build** your workspace:
 
@@ -102,12 +102,12 @@ Follow these steps in separate terminals to build, run detection, capture images
    source devel/setup.bash
    ```
 
-2. **Download YOLO weights**:
+2. **Download YOLO weights** (in our case, YOLOv3-tiny):
 
    ```bash
    cd ~/catkin_ws/src/darknet_ros/darknet_ros/yolo_network_config/weights
    wget https://pjreddie.com/media/files/yolov3.weights
-   wget https://raw.githubusercontent.com/hamzaMahdi/darknet/master/yolov3-tiny.conv.15
+   wget https://raw.githubusercontent.com/hamzaMahdi/darknet/master/yolov3-tiny.conv.15 # this is from a forked repo, as we could not find the weights needed from the original repo
    ```
 
 3. **Launch YOLO detection**:
@@ -125,7 +125,7 @@ Follow these steps in separate terminals to build, run detection, capture images
      _sec_per_frame:=1
    ```
 
-5. **Make boundary script executable**:
+5. **Allow boundary script to be executable**:
 
    ```bash
    chmod +x ~/catkin_ws/src/darknet_ros/scripts/boundary.py
@@ -177,7 +177,7 @@ To save raw camera frames and overlay YOLO detections via `boundary.py`, follow 
 3. **Add `boundary.py`** to your package's `scripts/` directory:
 
  
-4. **Make it executable**:
+4. **Allow script to be executable**:
 
    ```bash
    chmod +x scripts/boundary.py
@@ -185,19 +185,19 @@ To save raw camera frames and overlay YOLO detections via `boundary.py`, follow 
 
 5. **Run the boundary node**:
 
-   In one terminal, launch YOLO detection:
+   Open terminal, then launch YOLO detection:
 
    ```bash
    roslaunch darknet_ros darknet_ros.launch
    ```
 
-   In another terminal, start the boundary overlay:
+   Open another terminal, then start the boundary overlay:
 
    ```bash
    rosrun darknet_ros boundary.py image_topic:=/camera/rgb/image_raw boxes_topic:=/darknet_ros/bounding_boxes
    ```
 
-You should see an OpenCV window showing each frame with detected object boundaries overlaid.
+An OpenCV window should open showing each frame with detected object boundaries overlaid.
 
 ## Troubleshooting
 
